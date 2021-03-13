@@ -62,6 +62,7 @@ import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.model.BrowseTheme
 import com.example.androiddevchallenge.model.DesignModel
 import com.example.androiddevchallenge.ui.theme.MyTheme
+import com.example.androiddevchallenge.ui.theme.appTypography
 import dev.chrisbanes.accompanist.coil.CoilImage
 
 class ContentActivity : AppCompatActivity() {
@@ -81,27 +82,39 @@ class ContentActivity : AppCompatActivity() {
         BrowseTheme(
             "https://images.pexels.com/photos/6208086/pexels-photo-6208086.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
             "Easy care"
+        ),
+        BrowseTheme(
+            "https://images.pexels.com/photos/3511755/pexels-photo-3511755.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+            "Statements"
         )
     )
     val designModel: MutableList<DesignModel> = mutableListOf(
         DesignModel(
-            "https://images.pexels.com/photos/2132227/pexels-photo-2132227.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-            "Desert chic",
+            "https://images.pexels.com/photos/3097770/pexels-photo-3097770.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+            "Monstera",
             "This is a description"
         ),
         DesignModel(
-            "https://images.pexels.com/photos/1400375/pexels-photo-1400375.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-            "Tiny terrariums",
+            "https://images.pexels.com/photos/4751978/pexels-photo-4751978.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+            "Aglaonema",
             "This is a description"
         ),
         DesignModel(
-            "https://images.pexels.com/photos/5699665/pexels-photo-5699665.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-            "Jungle vibes",
+            "https://images.pexels.com/photos/4425201/pexels-photo-4425201.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+            "Peace lily",
             "This is a description"
         ),
         DesignModel(
-            "https://images.pexels.com/photos/6208086/pexels-photo-6208086.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
-            "Easy care",
+            "https://images.pexels.com/photos/6208087/pexels-photo-6208087.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260", "Fiddle leaf",
+            "This is a description"
+        ),
+        DesignModel(
+            "https://images.pexels.com/photos/2123482/pexels-photo-2123482.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+            "Snake plant",
+            "This is a description"
+        ),
+        DesignModel(
+            "https://images.pexels.com/photos/1084199/pexels-photo-1084199.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260", "Pothos",
             "This is a description"
         )
     )
@@ -134,7 +147,7 @@ fun MyContentApp(browseTheme: MutableList<BrowseTheme>, designModel: MutableList
             Modifier
                 .paddingFromBaseline(top = 32.dp)
                 .padding(start = 16.dp),
-            style = MaterialTheme.typography.h1
+            style = appTypography.h1
         )
         LazyRow(
 
