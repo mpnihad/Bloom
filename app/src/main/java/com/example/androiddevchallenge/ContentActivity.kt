@@ -38,6 +38,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.Divider
 import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
@@ -62,7 +63,6 @@ import androidx.compose.ui.unit.dp
 import com.example.androiddevchallenge.model.BrowseTheme
 import com.example.androiddevchallenge.model.DesignModel
 import com.example.androiddevchallenge.ui.theme.MyTheme
-import com.example.androiddevchallenge.ui.theme.appTypography
 import dev.chrisbanes.accompanist.coil.CoilImage
 
 class ContentActivity : AppCompatActivity() {
@@ -105,7 +105,8 @@ class ContentActivity : AppCompatActivity() {
             "This is a description"
         ),
         DesignModel(
-            "https://images.pexels.com/photos/6208087/pexels-photo-6208087.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260", "Fiddle leaf",
+            "https://images.pexels.com/photos/6208087/pexels-photo-6208087.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+            "Fiddle leaf",
             "This is a description"
         ),
         DesignModel(
@@ -114,7 +115,8 @@ class ContentActivity : AppCompatActivity() {
             "This is a description"
         ),
         DesignModel(
-            "https://images.pexels.com/photos/1084199/pexels-photo-1084199.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260", "Pothos",
+            "https://images.pexels.com/photos/1084199/pexels-photo-1084199.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+            "Pothos",
             "This is a description"
         )
     )
@@ -147,7 +149,7 @@ fun MyContentApp(browseTheme: MutableList<BrowseTheme>, designModel: MutableList
             Modifier
                 .paddingFromBaseline(top = 32.dp)
                 .padding(start = 16.dp),
-            style = appTypography.h1
+            style = MaterialTheme.typography.h1
         )
         LazyRow(
 
@@ -233,78 +235,103 @@ fun MyContentApp(browseTheme: MutableList<BrowseTheme>, designModel: MutableList
             ) {
                 itemsIndexed(designModel) { index: Int, item: DesignModel ->
                     val checkStatus: MutableState<Boolean> = remember { mutableStateOf(true) }
-                    Row(
+                    Column(
                         modifier = Modifier
                             .height(64.dp)
                             .fillMaxWidth()
                             .padding(start = 16.dp, end = 16.dp, bottom = 8.dp)
                     ) {
-                        CoilImage(
-                            data = item.imageUrl,
-                            contentDescription = item.imageName,
-                            contentScale = ContentScale.Crop,
-                            fadeIn = true,
-                            modifier = Modifier
-                                .size(64.dp)
-                                .clip(shape = RoundedCornerShape(4.dp))
 
-                        )
-                        Column(
-                            modifier = Modifier
-                                .padding(start = 16.dp)
+
+                        Row(
+
                         ) {
-
-                            Text(
-                                item.imageName,
-                                Modifier
-                                    .paddingFromBaseline(top = 24.dp),
-                                style = MaterialTheme.typography.h2
-                            )
-                            Text(
-                                item.imageDescription,
-                                Modifier
-                                    .paddingFromBaseline(bottom = 24.dp),
-                                style = MaterialTheme.typography.body1.copy(MaterialTheme.colors.onPrimary)
-                            )
-                        }
-                        Box() {
-                            Box(
+                            CoilImage(
+                                data = item.imageUrl,
+                                contentDescription = item.imageName,
+                                contentScale = ContentScale.Crop,
+                                fadeIn = true,
                                 modifier = Modifier
-                                    .fillMaxSize()
-                                    .wrapContentSize(align = Alignment.CenterEnd)
-                                    .size(24.dp)
+                                    .size(64.dp)
                                     .clip(shape = RoundedCornerShape(4.dp))
-                                    .border(
-                                        border = BorderStroke(
-                                            1.dp,
-                                            color = MaterialTheme.colors.secondary
-                                        ),
-                                        shape = RoundedCornerShape(4.dp)
-                                    )
-                                    .background(
-                                        color = if (index == 0) {
-                                            MaterialTheme.colors.secondary
-                                        } else {
-                                            Color.Transparent
-                                        },
-                                    )
 
                             )
-                            if (index == 0) {
-                                Icon(
-                                    imageVector = ImageVector.vectorResource(id = R.drawable.ic_baseline_done_24),
-                                    contentDescription = "checkbox",
-                                    modifier = Modifier
-                                        .fillMaxSize()
-                                        .wrapContentSize(align = Alignment.CenterEnd)
 
-                                        .wrapContentSize(align = Alignment.Center)
-                                        .padding(4.dp)
-                                        .size(16.dp),
-                                    tint = MaterialTheme.colors.onSecondary
-                                )
+                            Box()
+                            {
+                                Row()
+                                {
+                                    Column(
+                                        modifier = Modifier
+                                            .padding(start = 16.dp)
+                                    ) {
+
+                                        Text(
+                                            item.imageName,
+                                            Modifier
+                                                .paddingFromBaseline(top = 24.dp),
+                                            style = MaterialTheme.typography.h2
+                                        )
+                                        Text(
+                                            item.imageDescription,
+                                            Modifier
+                                                .paddingFromBaseline(bottom = 24.dp),
+                                            style = MaterialTheme.typography.body1.copy(
+                                                MaterialTheme.colors.onPrimary
+                                            )
+                                        )
+                                    }
+                                    Box() {
+                                        Box(
+                                            modifier = Modifier
+                                                .fillMaxSize()
+                                                .wrapContentSize(align = Alignment.CenterEnd)
+                                                .size(24.dp)
+                                                .clip(shape = RoundedCornerShape(4.dp))
+                                                .border(
+                                                    border = BorderStroke(
+                                                        1.dp,
+                                                        color = MaterialTheme.colors.secondary
+                                                    ),
+                                                    shape = RoundedCornerShape(4.dp)
+                                                )
+                                                .background(
+                                                    color = if (index == 0) {
+                                                        MaterialTheme.colors.secondary
+                                                    } else {
+                                                        Color.Transparent
+                                                    },
+                                                )
+
+                                        )
+                                        if (index == 0) {
+                                            Icon(
+                                                imageVector = ImageVector.vectorResource(id = R.drawable.ic_baseline_done_24),
+                                                contentDescription = "checkbox",
+                                                modifier = Modifier
+                                                    .fillMaxSize()
+                                                    .wrapContentSize(align = Alignment.CenterEnd)
+
+                                                    .wrapContentSize(align = Alignment.Center)
+                                                    .padding(4.dp)
+                                                    .size(16.dp),
+                                                tint = MaterialTheme.colors.onSecondary
+                                            )
+                                        }
+
+
+                                    }
+
+                                }
+                                Divider(
+                                    color =Color.Black,
+                                    startIndent = 8.dp,
+                                    modifier = Modifier.fillMaxHeight().wrapContentHeight(align = Alignment.Bottom)
+                                    )
                             }
                         }
+
+
                     }
                 }
             }
@@ -320,25 +347,37 @@ fun MyContentApp(browseTheme: MutableList<BrowseTheme>, designModel: MutableList
             ) {
                 Row() {
                     Column(
-                        modifier = Modifier.weight(1f).fillMaxHeight().wrapContentHeight(align = Alignment.CenterVertically)
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxHeight()
+                            .wrapContentHeight(align = Alignment.CenterVertically)
                     ) {
                         contentDown(R.drawable.ic_baseline_home_24, "Home")
                     }
 
                     Column(
-                        modifier = Modifier.weight(1f).fillMaxHeight().wrapContentHeight(align = Alignment.CenterVertically)
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxHeight()
+                            .wrapContentHeight(align = Alignment.CenterVertically)
                     ) {
                         contentDown(R.drawable.ic_baseline_favorite_border_24, "Favorites")
                     }
 
                     Column(
-                        modifier = Modifier.weight(1f).fillMaxHeight().wrapContentHeight(align = Alignment.CenterVertically)
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxHeight()
+                            .wrapContentHeight(align = Alignment.CenterVertically)
                     ) {
                         contentDown(R.drawable.ic_baseline_account_circle_24, "Profile")
                     }
 
                     Column(
-                        modifier = Modifier.weight(1f).fillMaxHeight().wrapContentHeight(align = Alignment.CenterVertically)
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxHeight()
+                            .wrapContentHeight(align = Alignment.CenterVertically)
                     ) {
                         contentDown(R.drawable.ic_baseline_shopping_cart_24, "Cart")
                     }
@@ -357,14 +396,18 @@ private fun contentDown(icon: Int, name: String) {
             .fillMaxWidth()
             .wrapContentWidth(align = Alignment.CenterHorizontally)
             .size(24.dp),
-        tint = if (name == "Home") { MaterialTheme.colors.onBackground } else {
+        tint = if (name == "Home") {
+            MaterialTheme.colors.onBackground
+        } else {
             MaterialTheme.colors.primaryVariant
         }
     )
     Text(
         name,
         style = MaterialTheme.typography.caption.copy(
-            color = if (name == "Home") { MaterialTheme.colors.onBackground } else {
+            color = if (name == "Home") {
+                MaterialTheme.colors.onBackground
+            } else {
                 MaterialTheme.colors.primaryVariant
             }
         ),
@@ -388,7 +431,9 @@ fun SearchText(hint: String) {
 
                 hint,
                 style = MaterialTheme.typography.body1.copy(color = MaterialTheme.colors.onPrimary),
-                modifier = Modifier.fillMaxHeight().wrapContentHeight(align = Alignment.CenterVertically)
+                modifier = Modifier
+                    .fillMaxHeight()
+                    .wrapContentHeight(align = Alignment.CenterVertically)
             )
         },
 
