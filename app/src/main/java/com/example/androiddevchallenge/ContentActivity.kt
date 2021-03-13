@@ -324,7 +324,7 @@ fun MyContentApp(browseTheme: MutableList<BrowseTheme>, designModel: MutableList
 
                                 }
                                 Divider(
-                                    color =Color.Black,
+                                    color =MaterialTheme.colors.onPrimary,
                                     startIndent = 8.dp,
                                     modifier = Modifier.fillMaxHeight().wrapContentHeight(align = Alignment.Bottom)
                                     )
