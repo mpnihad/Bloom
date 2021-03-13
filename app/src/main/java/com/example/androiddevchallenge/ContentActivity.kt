@@ -242,10 +242,7 @@ fun MyContentApp(browseTheme: MutableList<BrowseTheme>, designModel: MutableList
                             .padding(start = 16.dp, end = 16.dp, bottom = 8.dp)
                     ) {
 
-
-                        Row(
-
-                        ) {
+                        Row() {
                             CoilImage(
                                 data = item.imageUrl,
                                 contentDescription = item.imageName,
@@ -257,10 +254,8 @@ fun MyContentApp(browseTheme: MutableList<BrowseTheme>, designModel: MutableList
 
                             )
 
-                            Box()
-                            {
-                                Row()
-                                {
+                            Box() {
+                                Row() {
                                     Column(
                                         modifier = Modifier
                                             .padding(start = 16.dp)
@@ -318,20 +313,15 @@ fun MyContentApp(browseTheme: MutableList<BrowseTheme>, designModel: MutableList
                                                 tint = MaterialTheme.colors.onSecondary
                                             )
                                         }
-
-
                                     }
-
                                 }
                                 Divider(
-                                    color =MaterialTheme.colors.onPrimary,
+                                    color = MaterialTheme.colors.onPrimary,
                                     startIndent = 8.dp,
                                     modifier = Modifier.fillMaxHeight().wrapContentHeight(align = Alignment.Bottom)
-                                    )
+                                )
                             }
                         }
-
-
                     }
                 }
             }
