@@ -327,6 +327,7 @@ fun MyContentApp(browseTheme: MutableList<BrowseTheme>, designModel: MutableList
             }
 
             Box(
+
                 modifier = Modifier
                     .fillMaxSize()
                     .wrapContentSize(align = Alignment.BottomCenter)
