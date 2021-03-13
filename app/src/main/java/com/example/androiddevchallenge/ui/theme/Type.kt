@@ -53,7 +53,7 @@ private val appFontFamily = FontFamily(
             style = FontStyle.Normal
         ),
         Font(
-            resId = R.font.nunitosans_black_italic,
+            resId =  R.font.nunitosans_black_italic,
             weight = FontWeight.Black,
             style = FontStyle.Italic
         ),
